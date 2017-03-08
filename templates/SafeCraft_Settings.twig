@@ -1,0 +1,305 @@
+{#
+/**
+ * SafeCraft plugin for Craft CMS
+ *
+ * SafeCraft Settings.twig
+ *
+ * @author    QuebecStudio
+ * @copyright Copyright (c) 2017 QuebecStudio
+ * @link      http://quebecstudio.com
+ * @package   SafeCraft
+ * @since     1.0.0
+ */
+#}
+
+{% import "_includes/forms" as forms %}
+
+
+
+{% includeJsResource "safecraft/js/SafeCraft_Script.js" %}
+
+{% set tabs = {
+    tab1: { label: "Content"|t, url: '#settings-tab1' },
+    tab2: { label: "Destination"|t, url: '#settings-tab2' } ,  
+    tab3: { label: "Remote Access"|t, url: '#settings-tab3' }
+} %}
+
+
+
+
+<div class="item" data-position="left" data-colspan="2">
+    <div id="fields" class="pane">
+        {% include "_includes/tabs" %}
+
+    
+    <div>
+        <div id="tab1">
+			
+			
+            <h2>{{ "Files"|t }}</h2>
+
+
+            <div class="grid">
+              <div class="item" data-min-colspan="1" data-max-colspan="1">
+                <div>
+            {{  forms.lightswitchField({
+                    label: "Include Config"|t,
+                    id: 'backupConfig',
+                            'instructions': "Add folder"|t~": <code>craft/config</code>",
+                    name: 'backupConfig',
+                    value: settings.backupConfig,        
+                    on: (settings.backupConfig is defined) ? settings.backupConfig : ""
+                })
+            }}
+                </div>
+              </div>
+              <div class="item" data-min-colspan="1" data-max-colspan="1">
+                <div>
+                    {{  forms.lightswitchField({
+                    label: "Include Plugins"|t,
+                    id: 'backupPlugins',
+                            'instructions': "Add folder"|t~": <code>craft/plugins</code>",
+                    name: 'backupPlugins',
+                    value: settings.backupPlugins,        
+                    on: (settings.backupPlugins is defined) ? settings.backupPlugins : ""
+                })
+            }} 
+                </div>
+              </div>
+              <div class="item" data-min-colspan="1" data-max-colspan="1">
+                <div>
+                    {{  forms.lightswitchField({
+                    label: "Include Translations"|t,
+                    id: 'backupTranslations',
+                            'instructions': "Add folder"|t~": <code>craft/translations</code>",
+                    name: 'backupTranslations',
+                    value: settings.backupTranslations,        
+                    on: (settings.backupTranslations is defined) ? settings.backupTranslations : ""
+                })
+            }}
+                </div>
+              </div>
+              <div class="item" data-min-colspan="1" data-max-colspan="1">
+                <div>
+                    {{  forms.lightswitchField({
+                    label: "Include Assets (transformed images)"|t,
+                    id: 'backupAssets',
+                            'instructions': "Add folder"|t~": <code>craft/storage/runtime/assets</code>",
+                    name: 'backupAssets',
+                    value: settings.backupAssets,        
+                    on: (settings.backupAssets is defined) ? settings.backupAssets : ""
+                })
+            }}
+                </div>
+              </div>
+              <div class="item" data-min-colspan="1" data-max-colspan="1">
+                <div>
+                    {{  forms.lightswitchField({
+                    label: "Include Logs"|t,
+                    id: 'backupLogs',
+                            'instructions': "Add folder"|t~": <code>craft/storage/runtime/logs</code>",
+                    name: 'backupLogs',
+                    value: settings.backupLogs,        
+                    on: (settings.backupLogs is defined) ? settings.backupLogs : ""
+                })
+            }}
+                </div>
+              </div>
+              <div class="item" data-min-colspan="1" data-max-colspan="1">
+                <div>
+                    {{  forms.lightswitchField({
+                    label: "Include Public Folder"|t,
+                    id: 'backupPublic',
+                            'instructions': "Add folder"|t~": <code>craft/storage/runtime/logs</code><br><span style=\"color:red\">" ~ "Warning: this may generate a very large archive depending of the size of your ressources and assets folders. Use carefully."|t~"</span>",
+                    name: 'backupPublic',
+                    value: settings.backupPublic,        
+                    on: (settings.backupPublic is defined) ? settings.backupPublic : ""
+                })
+            }}
+                </div>
+              </div>
+            </div>
+
+            <hr>
+
+            <h2>{{ "Database"|t }}</h2>
+            <div class="grid">
+              <div class="item" data-min-colspan="2" data-max-colspan="2">
+                <div>
+                    {{  forms.lightswitchField({
+                            label: "Include Database Backups"|t,
+                            id: 'backupDB',
+                                    'instructions': "Add folder"|t~": <code>craft/storage/runtime/logs</code><br><span style=\"color:red\">" ~ "Warning: make sure you do not include too many revisions in the backup!"|t~"</span>",
+                            name: 'backupDB',
+                            value: settings.backupDB,        
+                            on: (settings.backupDB is defined) ? settings.backupDB : ""
+                        })
+                    }}
+                </div>
+              </div>
+              <div class="item" data-min-colspan="2" data-max-colspan="2">
+                <div>
+                    {{  forms.lightswitchField({
+                            label: "Generate a new Database Backup"|t,
+                            id: 'newDB',
+                                    'instructions': "Before packing, export the current database."|t,
+                            name: 'newDB',
+                            value: settings.newDB,        
+                            on: (settings.newDB is defined) ? settings.newDB : ""
+                        })
+                    }}
+                </div>
+              </div>
+              <div class="item" data-min-colspan="1" data-max-colspan="1">
+                <div>
+                    {{ forms.selectField({
+                        'label': "Revisions",
+                        'instructions': "How many database revisions you want to keep?"|t,    
+                        'id': 'revisions',
+                        'name': 'revisions',
+                            value: settings.revisions,   
+                        'options': {
+                                    '':'Unlimited'|t,
+                                    '1':'1',
+                                    '2':'2',
+                                    '3':'3',
+                                    '4':'4',
+                                    '5':'5',
+                                    '6':'6',
+                                    '7':'7',
+                                    '8':'8',
+                                    '9':'9',
+                                    '10':'10'
+                                    }
+                            })
+                    }}
+                </div>
+              </div>
+            </div>
+        </div>
+        <div id="tab2" class="hidden">
+            
+            {{ forms.selectField({
+                'label': "Move to Support",
+                'instructions': "Where to move archive after backup"|t,
+                'required': true,
+                'id': 'destination',
+                'name': 'destination',
+                    value: settings.destination,   
+                'options': options})
+            }}
+
+            <div class="dest dest-storage">
+            {{ forms.selectField({
+                'label': "Archives in Craft Storage"|t,
+                'instructions': "How many backup archives you want to keep?"|t,    
+                'id': 'revisions_storage',
+                'name': 'revisions_storage',
+                    value: settings.revisions_storage,   
+                'options': {
+                            '':'Unlimited'|t,
+                            '1':'1',
+                            '2':'2',
+                            '3':'3',
+                            '4':'4',
+                            '5':'5',
+                            '6':'6',
+                            '7':'7',
+                            '8':'8',
+                            '9':'9',
+                            '10':'10'
+                            }
+                    })
+            }}
+            </div>
+
+            <div class="dest dest-ftp">
+            {{ forms.textField({
+                label: 'FTP Server'|t,
+                instructions: 'Enter hostname or IP address.'|t,
+                id: 'ftp_server',
+                name: 'ftp_server', 
+                value: settings['ftp_server']})
+            }}
+            {{ forms.textField({
+                label: 'FTP Username'|t,    
+                id: 'ftp_username',
+                name: 'ftp_username', 
+                value: settings['ftp_username']})
+            }}
+            {{ forms.textField({
+                label: 'FTP Password'|t, 
+                    type: 'password',
+                id: 'ftp_password',
+                name: 'ftp_password', 
+                value: settings['ftp_password']})
+            }}
+            {{ forms.textField({
+                label: 'FTP Port'|t, 	
+                id: 'ftp_port',
+                name: 'ftp_port', 
+                value: settings['ftp_port']})
+            }}
+            {{ forms.textField({
+                label: 'FTP Path'|t, 	
+                id: 'ftp_path',
+                name: 'ftp_path', 
+                value: settings['ftp_path']})
+            }}
+            {{  forms.checkbox({
+                    label: "FTP Passive"|t,
+                    id: 'ftp_pasv',		
+                    name: 'ftp_pasv',
+                    value: 1,        
+                    checked: settings.ftp_pasv==1
+                })
+            }}<br>
+            {{  forms.checkbox({
+                    label: "FTP Secure (SSL)"|t,
+                    id: 'ftp_ssl',		
+                    name: 'ftp_ssl',
+                    value: 1,        
+                    checked: settings.ftp_ssl==1
+                })
+            }}
+            </div>
+            
+            
+        </div>
+        <div id="tab3" class="hidden">
+            
+            
+            {{ forms.textField({
+                label: 'Secret Key'|t, 	
+                    instruction: 'This key will be used to use this plugin remotely.'|t, 	
+                id: 'secretKey',
+                name: 'secretKey', 
+                value: settings['secretKey']})
+            }}
+            
+            {% set key = settings.secretKey ? settings.secretKey : '1234567890' %}
+
+            <h3>Examples</h3>
+
+            <p>Simply create a GET or a POST request to the action URL.</p>
+
+            <h4>Template</h4>
+
+            <code>{{ "{{ siteUrl(craft.config.get('actionTrigger') ~ '/safeCraft/backup', { key: '" ~ key ~ "' }) }}"|raw }}</code>
+
+            <h4>URL</h4>
+
+            <code>{{ siteUrl(craft.config.get('actionTrigger') ~ '/safeCraft/backup', { key: key }) }}</code>
+
+            <h4>Cron</h4>
+            <p>Create a cron job with the following command to create regular backups. Ensure you've set (above) the maximum number of backups to keep.</p>
+            <code>wget {{ siteUrl(craft.config.get('actionTrigger') ~ '/safeCraft/backup', { key: key }) }} >/dev/null 2>&1</code>
+        </div>
+    </div>
+    </div>
+</div>
+		
+            
+
+
+
