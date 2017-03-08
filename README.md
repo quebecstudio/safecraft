@@ -2,7 +2,7 @@
 
 SafeCraft plugin allows you to custom backup your Craft website. 
 
-(Inspired by: https://straightupcraft.com/craft-plugins/dump by PutYourLightsOn) 
+(Inspired by: https://straightupcraft.com/craft-plugins/dump by PutYourLightsOn)
 
 
 ## Installation
