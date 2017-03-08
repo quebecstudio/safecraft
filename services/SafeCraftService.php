@@ -30,7 +30,7 @@ class SafeCraftService extends BaseApplicationComponent
 		}
 		$settings = $this->getSettings();
 		$filesDeleted = $this->_deleteOldBackups_Storage($settings->revisions_storage);
-		echo "Storage: File moved.\n";
+		echo Craft::t("Storage: File moved.")."\n";
 		return rename($file, $path.basename($file));
 	}
 	
@@ -52,10 +52,10 @@ class SafeCraftService extends BaseApplicationComponent
 		}
 		
 		if (ftp_put($conn_id, $path.basename($file), $file, FTP_BINARY)) {
-		 echo "FTP: File transfered.\n";
+		 echo Craft::t("FTP: File transfered.")."\n";
 		 $result = true;
 		} else {
-		 echo "FTP: Error occured while transfering file.\n";
+		 echo Craft::t("FTP: Error occured while transfering file.")."\n";
 		 $result = false;
 		}
 		unlink($file);
