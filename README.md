@@ -20,4 +20,4 @@ SafeCraft works on Craft 2.4.x and Craft 2.5.x.
 
 In settings, you can select what you want to include in your backup archive, then choose where you want to move it (FTP or Craft storage)
 
-![screenshot](safecraft/resources/screenshots/safecraft.png)
+![screenshot](/resources/screenshots/safecraft.png)
