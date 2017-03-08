@@ -39,22 +39,11 @@ class SafeCraftPlugin extends BasePlugin
         return Craft::t('SafeCraft plugin allows you to custom backup your Craft website.');
     }
 
-    
-    public function getDocumentationUrl()
-    {
-        return '???';
-    }
-
-    
-    public function getReleaseFeedUrl()
-    {
-        return '???';
-    }
-
+       
     
     public function getVersion()
     {
-        return '1.0.0';
+        return '1.0.1';
     }
 
     
@@ -65,7 +54,7 @@ class SafeCraftPlugin extends BasePlugin
 
     public function getDeveloper()
     {
-        return 'QuebecStudio';
+        return 'Québec Studio';
     }
 
     
