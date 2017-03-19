@@ -27,3 +27,8 @@ In settings, you can select what you want to include in your backup archive, the
 
  - English
  - French
+
+
+Plugin development by [Québec Studio](http://quebecstudio.com)
+
+Icon designed by [Madebyoliver](http://www.flaticon.com/authors/madebyoliver) from [Flaticon](http://www.flaticon.com/)
