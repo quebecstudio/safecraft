@@ -110,7 +110,7 @@
                     {{  forms.lightswitchField({
                     label: "Include Public Folder"|t,
                     id: 'backupPublic',
-                    instructions: "Add folder"|t~": <code>" ~ craft.safecraft.getPublicPath() ~ "</code><br><span style=\"color:red\">" ~ "Warning: this may generate a very large archive depending of the size of your ressources and assets folders. Use carefully."|t~"</span>",
+                    instructions: "Add folder"|t~": <code>" ~ craft.safecraft.getPublicPath() ~ "</code><br><span style=\"color:red\">" ~ "Warning: this may generate a very large archive depending of the size of your resources and assets folders. Use carefully."|t~"</span>",
                     name: 'backupPublic',
                     value: settings.backupPublic,        
                     on: (settings.backupPublic is defined) ? settings.backupPublic : ""
