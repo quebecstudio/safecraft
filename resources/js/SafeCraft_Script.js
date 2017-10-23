@@ -20,6 +20,8 @@ $(function() {
                 $('.dest-storage').show();
         if (sel=='FTP')
                 $('.dest-ftp').show();
+        if (sel=='DROPBOX')
+                $('.dest-dropbox').show();
     });
     $('#settings-destination').trigger('change');
 
