@@ -18,12 +18,15 @@ class SafeCraftPlugin extends BasePlugin
 	
     private $destinations = array(
         'STORAGE' => 'Craft Storage',
-        'FTP' => 'FTP',								
+        'FTP' => 'FTP',
+        'DROPBOX' => 'Dropbox'							
     );
 	
     
     public function init()
     {
+        require_once __DIR__ . '/vendor/autoload.php';
+        
         parent::init();		
     }
 
@@ -114,6 +117,10 @@ class SafeCraftPlugin extends BasePlugin
             'ftp_port' => array(AttributeType::Number, 'label' => 'FTP Port', 'default' => 21),
             'ftp_pasv' => array(AttributeType::Bool, 'label' => 'FTP Passive', 'default' => false), 
             'ftp_ssl' => array(AttributeType::Bool, 'label' => 'FTP Secure', 'default' => false),
+            'dropbox_client_id' => array(AttributeType::String, 'label' => 'Dropbox Client Id', 'default' => ''),
+            'dropbox_client_secret' => array(AttributeType::String, 'label' => 'Dropbox Client Secret', 'default' => ''),
+            'dropbox_access_token' => array(AttributeType::String, 'label' => 'Dropbox Access Token', 'default' => ''),
+            'dropbox_folder_prefix' => array(AttributeType::String, 'label' => 'Dropbox Folder Prefix', 'default' => ''),
         );
     }
 
