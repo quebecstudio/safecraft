@@ -34,11 +34,15 @@ class SafeCraftController extends BaseController
         if ($file = craft()->safeCraft->doBackup()){
             switch ($settings->destination){
                 case 'STORAGE':
-                        craft()->safeCraft->saveBackupToStorage($file);
-                        break;
+                    craft()->safeCraft->saveBackupToStorage($file);
+                    break;
                 case 'FTP':
-                        craft()->safeCraft->saveBackupToFTP($file);
-                        break;
+                    craft()->safeCraft->saveBackupToFTP($file);
+                    break;
+                
+                case 'DROPBOX':
+                    craft()->safeCraft->saveBackupToDropbox($file);
+                    break;
             }
         }else{
             echo Craft::t('A problem occured while backup.');

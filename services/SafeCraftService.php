@@ -13,8 +13,14 @@
 
 namespace Craft;
 
+use \Kunnu\Dropbox\Dropbox;
+use \Kunnu\Dropbox\DropboxApp;
+use \Kunnu\Dropbox\DropboxFile;
+use \Kunnu\Dropbox\Exceptions\DropboxClientException;
+
 class SafeCraftService extends BaseApplicationComponent
 {
+	private $dropboxClient;
      
 	public function getSettings(){
 		if (!$plugin = craft()->plugins->getPlugin('safecraft')) {
@@ -62,6 +68,58 @@ class SafeCraftService extends BaseApplicationComponent
 		ftp_close($conn_id);
 		return $result;
 	}
+
+	public function saveBackupToDropbox($file){
+		$settings = $this->getSettings();
+		
+		// Connect to Dropbox
+		$dboxConfig = new DropboxApp(
+			$settings->dropbox_client_id,
+			$settings->dropbox_client_secret, 
+			$settings->dropbox_access_token
+		);
+
+		$dboxFolder = $settings->dropbox_folder_prefix;
+
+		//Configure Dropbox service
+		$this->dropboxClient = new Dropbox($dboxConfig);
+
+		// Get app folder contents
+		$listFolderContents = $this->dropboxClient->listFolder("/");
+		
+		//Fetch Items
+		$items = $listFolderContents->getItems();
+
+		$dboxFolder = $this->getOrCreateFolderPrefix($dboxFolder, $items->all());
+
+		$dropboxFile = new DropboxFile($file);
+
+		$dboxFile = $this->dropboxClient->upload(
+			$dropboxFile, 
+			$dboxFolder->getPathDisplay() . "/" . $dropboxFile->getFileName(), 
+			[
+				'autorename' => true
+			]
+		);
+
+		var_dump( $dboxFile );
+
+		return true;
+	}
+
+	private function getOrCreateFolderPrefix($dboxFolder, $items) {
+		if( ! empty($dboxFolder) && count($items) ) {
+			$dboxFolder = "/" . $dboxFolder;
+			foreach ($items as $item) {
+				if( $item->getDataProperty('.tag') == 'folder' && $item->getDataProperty('path_display') == $dboxFolder ) {
+					return $item;
+				}
+			}
+			return $this->dropboxClient->createFolder($dboxFolder);
+		}
+	}
+
+	
     	
 	public function doBackup(){
 		

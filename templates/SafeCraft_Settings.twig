@@ -190,78 +190,112 @@
             }}
 
             <div class="dest dest-storage">
-            {{ forms.selectField({
-                label: "Archives in Craft Storage"|t,
-                instructions: "How many backup archives you want to keep?"|t,    
-                id: 'revisions_storage',
-                name: 'revisions_storage',
-                value: settings.revisions_storage,   
-                options: {
-                            '':'Unlimited'|t,
-                            '1':'1',
-                            '2':'2',
-                            '3':'3',
-                            '4':'4',
-                            '5':'5',
-                            '6':'6',
-                            '7':'7',
-                            '8':'8',
-                            '9':'9',
-                            '10':'10'
-                            }
-                    })
-            }}
+                {{ forms.selectField({
+                    label: "Archives in Craft Storage"|t,
+                    instructions: "How many backup archives you want to keep?"|t,    
+                    id: 'revisions_storage',
+                    name: 'revisions_storage',
+                    value: settings.revisions_storage,   
+                    options: {
+                                '':'Unlimited'|t,
+                                '1':'1',
+                                '2':'2',
+                                '3':'3',
+                                '4':'4',
+                                '5':'5',
+                                '6':'6',
+                                '7':'7',
+                                '8':'8',
+                                '9':'9',
+                                '10':'10'
+                                }
+                        })
+                }}
             </div>
 
             <div class="dest dest-ftp">
-            {{ forms.textField({
-                label: 'FTP Server'|t,
-                instructions: 'Enter hostname or IP address.'|t,
-                id: 'ftp_server',
-                name: 'ftp_server', 
-                value: settings['ftp_server']})
-            }}
-            {{ forms.textField({
-                label: 'FTP Username'|t,    
-                id: 'ftp_username',
-                name: 'ftp_username', 
-                value: settings['ftp_username']})
-            }}
-            {{ forms.textField({
-                label: 'FTP Password'|t, 
-                type: 'password',
-                id: 'ftp_password',
-                name: 'ftp_password', 
-                value: settings['ftp_password']})
-            }}
-            {{ forms.textField({
-                label: 'FTP Port'|t, 	
-                id: 'ftp_port',
-                name: 'ftp_port', 
-                value: settings['ftp_port']})
-            }}
-            {{ forms.textField({
-                label: 'FTP Path'|t, 	
-                id: 'ftp_path',
-                name: 'ftp_path', 
-                value: settings['ftp_path']})
-            }}
-            {{  forms.checkbox({
-                    label: "FTP Passive"|t,
-                    id: 'ftp_pasv',		
-                    name: 'ftp_pasv',
-                    value: 1,        
-                    checked: settings.ftp_pasv==1
-                })
-            }}<br>
-            {{  forms.checkbox({
-                    label: "FTP Secure (SSL)"|t,
-                    id: 'ftp_ssl',		
-                    name: 'ftp_ssl',
-                    value: 1,        
-                    checked: settings.ftp_ssl==1
-                })
-            }}
+                {{ forms.textField({
+                    label: 'FTP Server'|t,
+                    instructions: 'Enter hostname or IP address.'|t,
+                    id: 'ftp_server',
+                    name: 'ftp_server', 
+                    value: settings['ftp_server']})
+                }}
+                {{ forms.textField({
+                    label: 'FTP Username'|t,    
+                    id: 'ftp_username',
+                    name: 'ftp_username', 
+                    value: settings['ftp_username']})
+                }}
+                {{ forms.textField({
+                    label: 'FTP Password'|t, 
+                    type: 'password',
+                    id: 'ftp_password',
+                    name: 'ftp_password', 
+                    value: settings['ftp_password']})
+                }}
+                {{ forms.textField({
+                    label: 'FTP Port'|t, 	
+                    id: 'ftp_port',
+                    name: 'ftp_port', 
+                    value: settings['ftp_port']})
+                }}
+                {{ forms.textField({
+                    label: 'FTP Path'|t, 	
+                    id: 'ftp_path',
+                    name: 'ftp_path', 
+                    value: settings['ftp_path']})
+                }}
+                {{  forms.checkbox({
+                        label: "FTP Passive"|t,
+                        id: 'ftp_pasv',		
+                        name: 'ftp_pasv',
+                        value: 1,        
+                        checked: settings.ftp_pasv==1
+                    })
+                }}<br>
+                {{  forms.checkbox({
+                        label: "FTP Secure (SSL)"|t,
+                        id: 'ftp_ssl',		
+                        name: 'ftp_ssl',
+                        value: 1,        
+                        checked: settings.ftp_ssl==1
+                    })
+                }}
+            </div>
+
+            <div class="dest dest-dropbox">
+                {{ forms.textField({
+                    label: 'Client Id'|t,
+                    instructions: 'Enter Dropbox client id.'|t,
+                    id: 'dropbox_client_id',
+                    name: 'dropbox_client_id', 
+                    value: settings['dropbox_client_id']})
+                }}
+
+                {{ forms.textField({
+                    label: 'Client Secret'|t,
+                    instructions: 'Enter Dropbox client secret.'|t,
+                    id: 'dropbox_client_secret',
+                    name: 'dropbox_client_secret', 
+                    value: settings['dropbox_client_secret']})
+                }}
+
+                {{ forms.textField({
+                    label: 'Access Token'|t,
+                    instructions: 'Enter Dropbox access token.'|t,
+                    id: 'dropbox_access_token',
+                    name: 'dropbox_access_token', 
+                    value: settings['dropbox_access_token']})
+                }}
+
+                {{ forms.textField({
+                    label: 'Folder Prefix'|t,
+                    instructions: 'Place the backup file inside a folder in dropbox'|t,
+                    id: 'dropbox_folder_prefix',
+                    name: 'dropbox_folder_prefix', 
+                    value: settings['dropbox_folder_prefix']})
+                }}
             </div>
             
             
