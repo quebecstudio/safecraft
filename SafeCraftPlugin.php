@@ -8,7 +8,7 @@
  * @copyright Copyright (c) 2017 QuebecStudio
  * @link      http://quebecstudio.com
  * @package   SafeCraft
- * @since     1.0.0
+ * @since     1.1.0
  */
 
 namespace Craft;
