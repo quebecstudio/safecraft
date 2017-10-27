@@ -2,6 +2,8 @@
 
 SafeCraft plugin allows you to custom backup your Craft website locally or to a FTP destination. 
 
+** NOW WITH DROPBOX SUPPORT ** Thanks to @webrgp
+
 (Inspired by: https://straightupcraft.com/craft-plugins/dump by PutYourLightsOn)
 
 ## Installation
@@ -14,6 +16,8 @@ To install SafeCraft, follow these steps:
 4. The plugin folder should be named `managecraft` for Craft to see it.  GitHub recently started appending `-master` (the branch name) to the name of the folder for zip file downloads.
 
 SafeCraft works on Craft 2.4.x and Craft 2.5.x.
+
+**IMPORTANT:** You must run `composer update` in the plugin folder !
 
 
 ## Configuring SafeCraft
