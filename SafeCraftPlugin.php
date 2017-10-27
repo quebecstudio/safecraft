@@ -1,13 +1,13 @@
 <?php
 /**
- * ManageCraft plugin for Craft CMS
+ * SafeCraft plugin for Craft CMS
  *
- * ManageCraft plugin allows you to manage your Craft CMS sites from one dashboard. 
+ * SafeCraft plugin allows you backup your Craft CMS website. 
  *
  * @author    QuebecStudio
  * @copyright Copyright (c) 2017 QuebecStudio
  * @link      http://quebecstudio.com
- * @package   ManageCraft
+ * @package   SafeCraft
  * @since     1.0.0
  */
 
@@ -46,7 +46,7 @@ class SafeCraftPlugin extends BasePlugin
     
     public function getVersion()
     {
-        return '1.0.1';
+        return '1.1.0';
     }
 
     
