@@ -1,8 +1,6 @@
 # SafeCraft plugin for Craft CMS
 
-SafeCraft plugin allows you to custom backup your Craft website locally or to a FTP destination. 
-
-** NOW WITH DROPBOX SUPPORT ** Thanks to @webrgp
+SafeCraft plugin allows you to custom backup your Craft website locally or to a FTP destination.
 
 (Inspired by: https://straightupcraft.com/craft-plugins/dump by PutYourLightsOn)
 
