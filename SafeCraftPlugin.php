@@ -67,6 +67,11 @@ class SafeCraftPlugin extends BasePlugin
         return 'http://quebecstudio.com';
     }
 
+		public function getReleaseFeedUrl()
+		{
+		    return 'https://raw.githubusercontent.com/quebecstudio/safecraft/master/releases.json';
+		}
+
 
     public function hasCpSection()
     {
