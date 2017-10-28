@@ -177,7 +177,7 @@ final class SFTP {
 				// set last error
 				$this->error = "Failed to connect to {$this->_host} (SSL connection)";
 				return false;
-			}
+			}      
 		// invalid connection type
 		} else {
 			$this->error = "Failed to connect to {$this->_host} (invalid connection type)";

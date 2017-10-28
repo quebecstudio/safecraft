@@ -10,7 +10,7 @@
  * @package   SafeCraft
  * @since     1.0.0
  */
- 
+
 namespace Craft;
 
 class SafeCraftController extends BaseController
@@ -18,11 +18,11 @@ class SafeCraftController extends BaseController
 
     protected $allowAnonymous = array('actionBackup');
 
-    
+
     public function actionBackup()
     {
         $settings = craft()->safeCraft->getSettings();
-		
+
 	// get key
         $key = craft()->request->getParam('key');
         // verify key
@@ -30,7 +30,7 @@ class SafeCraftController extends BaseController
             echo Craft::t('Unauthorised key');
             die();
         }
-		
+
         if ($file = craft()->safeCraft->doBackup()){
             switch ($settings->destination){
                 case 'STORAGE':
@@ -39,7 +39,9 @@ class SafeCraftController extends BaseController
                 case 'FTP':
                     craft()->safeCraft->saveBackupToFTP($file);
                     break;
-                
+                case 'SFTP':
+                    craft()->safeCraft->saveBackupToSFTP($file);
+                    break;
                 case 'DROPBOX':
                     craft()->safeCraft->saveBackupToDropbox($file);
                     break;

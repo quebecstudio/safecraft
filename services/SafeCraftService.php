@@ -17,6 +17,7 @@ use \Kunnu\Dropbox\Dropbox;
 use \Kunnu\Dropbox\DropboxApp;
 use \Kunnu\Dropbox\DropboxFile;
 use \Kunnu\Dropbox\Exceptions\DropboxClientException;
+use \SFTP;
 
 class SafeCraftService extends BaseApplicationComponent
 {
@@ -51,7 +52,7 @@ class SafeCraftService extends BaseApplicationComponent
 		$password = $settings->sftp_password;
 		$port = $settings->sftp_port;
 		$ftp = new SFTP($ftphost, $username, $password, $port);
-
+		$ftp->ssl=true;
 		if ($ftp->connect()){
 
 			if ($ftp->put($file, $path.basename($file), FTP_BINARY)) {
