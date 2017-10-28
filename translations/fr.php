@@ -70,4 +70,15 @@ return array(
     'Place the backup file inside a folder in dropbox' => 'Dossier où l\'archive doit être enregistrée dans Dropbox',
     'Dropbox: File transfered.' => 'Dropbox: Fichier transféré.',
     'Dropbox: Error occured while transfering file.' => 'Dropbox: Une erreur est survenue pendant le transfert du fichier.',
+
+    //1.1.2
+    'SFTP Server' => 'Serveur SFTP',
+    'SFTP Username' => 'Utilisateur FTP',
+    'SFTP Password' => 'Mot de passe FTP',
+    'SFTP Port' => 'Port FTP',
+    'SFTP Path' => 'Chemin FTP',
+    'FTP: Login error.' => 'FTP: Erreur de connexion.',
+    'SFTP: Login error.' => 'SFTP: Erreur de connexion.',
+    'SFTP: File transfered.' => 'SFTP: Fichier transféré.',
+    'SFTP: Error occured while transfering file.' => 'SFTP: Une erreur est survenue pendant le transfert du fichier.',
 );

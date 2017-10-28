@@ -11,8 +11,8 @@
  */
 
 $(function() {
-	
-	
+
+
     $('#settings-destination').on('change', function(){
         var sel = $(this).val();
         $('.dest').hide();
@@ -20,6 +20,8 @@ $(function() {
                 $('.dest-storage').show();
         if (sel=='FTP')
                 $('.dest-ftp').show();
+				if (sel=='SFTP')
+                $('.dest-sftp').show();
         if (sel=='DROPBOX')
                 $('.dest-dropbox').show();
     });
