@@ -4,7 +4,7 @@ SafeCraft plugin allows you to custom backup your Craft website locally or to a 
 
 ** NOW WITH DROPBOX SUPPORT ** Thanks to [Rodrigo Passos (@webrgp)](https://github.com/webrgp)
 
-This plugin is inspired by: https://straightupcraft.com/craft-plugins/dump by [Ben Croker (@PutYourLightsOn)](https://github.com/PutYourLightsOn)
+This plugin is inspired by [Craft Dump](https://github.com/putyourlightson/craft-dump) plugin by [Ben Croker (@PutYourLightsOn)](https://github.com/PutYourLightsOn)
 
 ## Installation
 
