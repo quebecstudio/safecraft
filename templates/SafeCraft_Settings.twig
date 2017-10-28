@@ -20,7 +20,7 @@
 
 {% set tabs = {
     tab1: { label: "Content"|t, url: '#settings-tab1' },
-    tab2: { label: "Destination"|t, url: '#settings-tab2' } ,  
+    tab2: { label: "Destination"|t, url: '#settings-tab2' } ,
     tab3: { label: "Remote Access"|t, url: '#settings-tab3' }
 } %}
 
@@ -31,11 +31,11 @@
     <div id="fields" class="pane">
         {% include "_includes/tabs" %}
 
-    
+
     <div>
         <div id="tab1">
-			
-			
+
+
             <h2>{{ "Files"|t }}</h2>
 
 
@@ -47,7 +47,7 @@
                     id: 'backupConfig',
                     instructions: "Add folder"|t~": <code>craft/config</code>",
                     name: 'backupConfig',
-                    value: settings.backupConfig,        
+                    value: settings.backupConfig,
                     on: (settings.backupConfig is defined) ? settings.backupConfig : ""
                 })
             }}
@@ -60,10 +60,10 @@
                     id: 'backupPlugins',
                     instructions: "Add folder"|t~": <code>craft/plugins</code>",
                     name: 'backupPlugins',
-                    value: settings.backupPlugins,        
+                    value: settings.backupPlugins,
                     on: (settings.backupPlugins is defined) ? settings.backupPlugins : ""
                 })
-            }} 
+            }}
                 </div>
               </div>
               <div class="item" data-min-colspan="1" data-max-colspan="1">
@@ -73,7 +73,7 @@
                     id: 'backupTranslations',
                     instructions: "Add folder"|t~": <code>craft/translations</code>",
                     name: 'backupTranslations',
-                    value: settings.backupTranslations,        
+                    value: settings.backupTranslations,
                     on: (settings.backupTranslations is defined) ? settings.backupTranslations : ""
                 })
             }}
@@ -86,7 +86,7 @@
                     id: 'backupAssets',
                     instructions: "Add folder"|t~": <code>craft/storage/runtime/assets</code>",
                     name: 'backupAssets',
-                    value: settings.backupAssets,        
+                    value: settings.backupAssets,
                     on: (settings.backupAssets is defined) ? settings.backupAssets : ""
                 })
             }}
@@ -99,7 +99,7 @@
                     id: 'backupLogs',
                     instructions: "Add folder"|t~": <code>craft/storage/runtime/logs</code>",
                     name: 'backupLogs',
-                    value: settings.backupLogs,        
+                    value: settings.backupLogs,
                     on: (settings.backupLogs is defined) ? settings.backupLogs : ""
                 })
             }}
@@ -112,7 +112,7 @@
                     id: 'backupPublic',
                     instructions: "Add folder"|t~": <code>" ~ craft.safecraft.getPublicPath() ~ "</code><br><span style=\"color:red\">" ~ "Warning: this may generate a very large archive depending of the size of your resources and assets folders. Use carefully."|t~"</span>",
                     name: 'backupPublic',
-                    value: settings.backupPublic,        
+                    value: settings.backupPublic,
                     on: (settings.backupPublic is defined) ? settings.backupPublic : ""
                 })
             }}
@@ -131,7 +131,7 @@
                             id: 'backupDB',
                             instructions: "Add folder"|t~": <code>craft/storage/runtime/logs</code><br><span style=\"color:red\">" ~ "Warning: make sure you do not include too many revisions in the backup!"|t~"</span>",
                             name: 'backupDB',
-                            value: settings.backupDB,        
+                            value: settings.backupDB,
                             on: (settings.backupDB is defined) ? settings.backupDB : ""
                         })
                     }}
@@ -144,7 +144,7 @@
                             id: 'newDB',
                             instructions: "Before packing, export the current database."|t,
                             name: 'newDB',
-                            value: settings.newDB,        
+                            value: settings.newDB,
                             on: (settings.newDB is defined) ? settings.newDB : ""
                         })
                     }}
@@ -154,10 +154,10 @@
                 <div>
                     {{ forms.selectField({
                         label: "Revisions",
-                        instructions: "How many database revisions you want to keep?"|t,    
+                        instructions: "How many database revisions you want to keep?"|t,
                         id: 'revisions',
                         name: 'revisions',
-                        value: settings.revisions,   
+                        value: settings.revisions,
                         options: {
                                     '':'Unlimited'|t,
                                     '1':'1',
@@ -178,24 +178,24 @@
             </div>
         </div>
         <div id="tab2" class="hidden">
-            
+
             {{ forms.selectField({
                 label: "Move to Support"|t,
                 instructions: "Where to move archive after backup?"|t,
                 required: true,
                 id: 'destination',
                 name: 'destination',
-                value: settings.destination,   
+                value: settings.destination,
                 options: options})
             }}
 
             <div class="dest dest-storage">
                 {{ forms.selectField({
                     label: "Archives in Craft Storage"|t,
-                    instructions: "How many backup archives you want to keep?"|t,    
+                    instructions: "How many backup archives you want to keep?"|t,
                     id: 'revisions_storage',
                     name: 'revisions_storage',
-                    value: settings.revisions_storage,   
+                    value: settings.revisions_storage,
                     options: {
                                 '':'Unlimited'|t,
                                 '1':'1',
@@ -218,50 +218,85 @@
                     label: 'FTP Server'|t,
                     instructions: 'Enter hostname or IP address.'|t,
                     id: 'ftp_server',
-                    name: 'ftp_server', 
+                    name: 'ftp_server',
                     value: settings['ftp_server']})
                 }}
                 {{ forms.textField({
-                    label: 'FTP Username'|t,    
+                    label: 'FTP Username'|t,
                     id: 'ftp_username',
-                    name: 'ftp_username', 
+                    name: 'ftp_username',
                     value: settings['ftp_username']})
                 }}
                 {{ forms.textField({
-                    label: 'FTP Password'|t, 
+                    label: 'FTP Password'|t,
                     type: 'password',
                     id: 'ftp_password',
-                    name: 'ftp_password', 
+                    name: 'ftp_password',
                     value: settings['ftp_password']})
                 }}
                 {{ forms.textField({
-                    label: 'FTP Port'|t, 	
+                    label: 'FTP Port'|t,
                     id: 'ftp_port',
-                    name: 'ftp_port', 
+                    name: 'ftp_port',
                     value: settings['ftp_port']})
                 }}
                 {{ forms.textField({
-                    label: 'FTP Path'|t, 	
+                    label: 'FTP Path'|t,
                     id: 'ftp_path',
-                    name: 'ftp_path', 
+                    name: 'ftp_path',
                     value: settings['ftp_path']})
                 }}
                 {{  forms.checkbox({
                         label: "FTP Passive"|t,
-                        id: 'ftp_pasv',		
+                        id: 'ftp_pasv',
                         name: 'ftp_pasv',
-                        value: 1,        
+                        value: 1,
                         checked: settings.ftp_pasv==1
                     })
                 }}<br>
                 {{  forms.checkbox({
                         label: "FTP Secure (SSL)"|t,
-                        id: 'ftp_ssl',		
+                        id: 'ftp_ssl',
                         name: 'ftp_ssl',
-                        value: 1,        
+                        value: 1,
                         checked: settings.ftp_ssl==1
                     })
                 }}
+            </div>
+
+            <div class="dest dest-sftp">
+                {{ forms.textField({
+                    label: 'SFTP Server'|t,
+                    instructions: 'Enter hostname or IP address.'|t,
+                    id: 'sftp_server',
+                    name: 'sftp_server',
+                    value: settings['sftp_server']})
+                }}
+                {{ forms.textField({
+                    label: 'SFTP Username'|t,
+                    id: 'sftp_username',
+                    name: 'sftp_username',
+                    value: settings['sftp_username']})
+                }}
+                {{ forms.textField({
+                    label: 'SFTP Password'|t,
+                    type: 'password',
+                    id: 'sftp_password',
+                    name: 'sftp_password',
+                    value: settings['sftp_password']})
+                }}
+                {{ forms.textField({
+                    label: 'SFTP Port'|t,
+                    id: 'sftp_port',
+                    name: 'sftp_port',
+                    value: settings['sftp_port']})
+                }}
+                {{ forms.textField({
+                    label: 'SFTP Path'|t,
+                    id: 'sftp_path',
+                    name: 'sftp_path',
+                    value: settings['sftp_path']})
+                }}              
             </div>
 
             <div class="dest dest-dropbox">
@@ -269,7 +304,7 @@
                     label: 'Client Id'|t,
                     instructions: 'Enter Dropbox client id.'|t,
                     id: 'dropbox_client_id',
-                    name: 'dropbox_client_id', 
+                    name: 'dropbox_client_id',
                     value: settings['dropbox_client_id']})
                 }}
 
@@ -277,7 +312,7 @@
                     label: 'Client Secret'|t,
                     instructions: 'Enter Dropbox client secret.'|t,
                     id: 'dropbox_client_secret',
-                    name: 'dropbox_client_secret', 
+                    name: 'dropbox_client_secret',
                     value: settings['dropbox_client_secret']})
                 }}
 
@@ -285,7 +320,7 @@
                     label: 'Access Token'|t,
                     instructions: 'Enter Dropbox access token.'|t,
                     id: 'dropbox_access_token',
-                    name: 'dropbox_access_token', 
+                    name: 'dropbox_access_token',
                     value: settings['dropbox_access_token']})
                 }}
 
@@ -293,26 +328,26 @@
                     label: 'Folder Prefix'|t,
                     instructions: 'Place the backup file inside a folder in dropbox'|t,
                     id: 'dropbox_folder_prefix',
-                    name: 'dropbox_folder_prefix', 
+                    name: 'dropbox_folder_prefix',
                     value: settings['dropbox_folder_prefix']})
                 }}
             </div>
-            
-            
+
+
         </div>
         <div id="tab3" class="hidden">
-            
-            
+
+
             {{ forms.textField({
-                label: 'Secret Key'|t, 	
-                instruction: 'This key will be used to use this plugin remotely.'|t, 	
+                label: 'Secret Key'|t,
+                instruction: 'This key will be used to use this plugin remotely.'|t,
                 id: 'secretKey',
-                name: 'secretKey', 
+                name: 'secretKey',
                 value: settings['secretKey']})
             }}
-            
+
             {% set key = settings.secretKey ? settings.secretKey : '1234567890' %}
-            
+
             <hr>
 
             <h3>{{ "Examples"|t }}</h3>
@@ -334,8 +369,3 @@
     </div>
     </div>
 </div>
-		
-            
-
-
-

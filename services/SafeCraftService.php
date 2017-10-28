@@ -40,6 +40,36 @@ class SafeCraftService extends BaseApplicationComponent
 		return rename($file, $path.basename($file));
 	}
 
+	public function saveBackupToSFTP($file){
+		require_once(__DIR__ . '/../src/SFTP.php');
+		$settings = $this->getSettings();
+
+		$path = trim($settings->sftp_path)?$this->fixpath(trim($settings->sftp_path)):'';
+
+		$ftphost = $settings->sftp_server;
+		$username = $settings->sftp_username;
+		$password = $settings->sftp_password;
+		$port = $settings->sftp_port;
+		$ftp = new SFTP($ftphost, $username, $password, $port);
+
+		if ($ftp->connect()){
+
+			if ($ftp->put($file, $path.basename($file), FTP_BINARY)) {
+			 echo Craft::t("SFTP: File transfered.")."\n";
+			 $result = true;
+			} else {
+			 echo Craft::t("SFTP: Error occured while transfering file.")."\n";
+			 $result = false;
+			}
+			unlink($file);
+			$ftp->close();
+		}else{
+			echo Craft::t("SFTP: Login error.")."\n";
+ 		 	$result = false;
+		}
+		return $result;
+	}
+
 	public function saveBackupToFTP($file){
 		$settings = $this->getSettings();
 
@@ -53,6 +83,7 @@ class SafeCraftService extends BaseApplicationComponent
 
 		$login_result = ftp_login($conn_id, $settings->ftp_username, $settings->ftp_password);
 
+		if ($login_result){
 		if ($settings->ftp_pasv){
 			ftp_pasv($conn_id, true);
 		}
@@ -66,6 +97,11 @@ class SafeCraftService extends BaseApplicationComponent
 		}
 		unlink($file);
 		ftp_close($conn_id);
+		}
+		else{
+			echo Craft::t("FTP: Login error.")."\n";
+ 		 	$result = false;
+		}
 		return $result;
 	}
 
