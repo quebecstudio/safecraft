@@ -20,7 +20,10 @@
         "downloadUrl": "https://github.com/quebecstudio/safecraft/archive/1.2.0.zip",
         "date": "2017-10-28T00:00:00.215Z",
         "notes": [
-            "[Added] Added SFTP support"
+            "[Added] Added SFTP support",
+            "[Added] Added update system",
+            "[Improved] Updated french translation",
+            "[Fixed] Fixed the connection test of the FTP protocol that was not monitored",
         ]
     }
 ]
