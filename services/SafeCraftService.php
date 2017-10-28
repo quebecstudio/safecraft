@@ -108,15 +108,18 @@ class SafeCraftService extends BaseApplicationComponent
 	}
 
 	private function getOrCreateFolderPrefix($dboxFolder, $items) {
+
+		$dboxFolder = "/" . $dboxFolder;
+		
 		if( ! empty($dboxFolder) && count($items) ) {
-			$dboxFolder = "/" . $dboxFolder;
 			foreach ($items as $item) {
 				if( $item->getDataProperty('.tag') == 'folder' && $item->getDataProperty('path_display') == $dboxFolder ) {
 					return $item;
 				}
 			}
-			return $this->dropboxClient->createFolder($dboxFolder);
 		}
+
+		return $this->dropboxClient->createFolder($dboxFolder);
 	}
 
 	
