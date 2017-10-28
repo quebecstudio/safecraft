@@ -29,7 +29,7 @@ return array(
     'Include Assets (transformed images)' => 'Inclure les ressources (transformations)',
     'Include Logs' => 'Inclure les journaux (Logs)',
     'Include Public Folder' => 'Inclure le dossier public',
-    'Warning: this may generate a very large archive depending of the size of your ressources and assets folders. Use carefully.' => 'Avertissement: cette opération peut générer une très grosse archive selon la taille de vos ressources. Utilisez avec précaution.',
+    'Warning: this may generate a very large archive depending of the size of your resources and assets folders. Use carefully.' => 'Avertissement: cette opération peut générer une très grosse archive selon la taille de vos ressources. Utilisez avec précaution.',
     'Database' => 'Base de données',
     'Include Database Backups' => 'Inclure la base de données',
     'Warning: make sure you do not include too many revisions in the backup!' => 'Avertissement: veuillez vous assurer de ne pas inclure trop de révisions dans votre archive!',
@@ -58,4 +58,16 @@ return array(
     'URL' => 'URL',
     'Cron' => 'Tâche planifiée (Cron)',
     'Create a cron job with the following command to create regular backups. Ensure you\'ve set the maximum number of backups to keep.' => 'Créez une tâche planifiée en utilisant la commande suivante pour créer des sauvegarde régulièrement. Veuillez vous assurer d\'avoir configuré correctement le nombre d\'archives à conserver.',
+
+    //1.1.0
+    'Client Id' => 'Clé client (App key/Client Id)',
+    'Client Secret' => 'Clé secrète (App/Client Secret)',
+    'Access Token' => 'Jeton d\'accès (Access Token)',
+    'Folder Prefix' => 'Préfixe de dossier',
+    'Enter Dropbox client id.' => 'Entrez la clé client',
+    'Enter Dropbox client secret.' => 'Entrez la clé secrète',
+    'Enter Dropbox access token.' => 'Entrez le jeton d\'accès.',
+    'Place the backup file inside a folder in dropbox' => 'Dossier où l\'archive doit être enregistrée dans Dropbox',
+    'Dropbox: File transfered.' => 'Dropbox: Fichier transféré.',
+    'Dropbox: Error occured while transfering file.' => 'Dropbox: Une erreur est survenue pendant le transfert du fichier.',
 );
